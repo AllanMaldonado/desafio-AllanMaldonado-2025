@@ -48,4 +48,16 @@ describe('Testes Adicionais -> Validar Entradas', () => {
     expect(resultado.erro).toBe('Brinquedo inválido');
     expect(resultado.lista).toBeFalsy();
   });
+
+  test('Não pode adotar mais que 3 animais', () => {
+    const resultado = new AbrigoAnimais().encontraPessoas('BOLA',
+      'LASER,RATO,BOLA,SKATE,CAIXA,NOVELO', 'Bebe,Rex,Loco,Bola');
+
+    expect(resultado.lista[0]).toBe('Bebe - pessoa 2');
+    expect(resultado.lista[1]).toBe('Bola - abrigo');
+    expect(resultado.lista[2]).toBe('Loco - pessoa 2');
+    expect(resultado.lista[3]).toBe('Rex - pessoa 2');
+    expect(resultado.lista.length).toBe(4);
+    expect(resultado.erro).toBeFalsy();
+  });
 })

@@ -14,7 +14,7 @@ function verificarDuplicado(lista) {
     return true
 }
 
-export function validarAnimais(animais) {  
+export function validarAnimais(animais) {
     const listaAnimaisUpper = Object.keys(listaAnimais)
         .map(a => a.toUpperCase())
 
@@ -27,7 +27,7 @@ export function validarAnimais(animais) {
     return false
 }
 
-export function validarBrinquedos(brinquedos) { 
+export function validarBrinquedos(brinquedos) {
 
     const brinquedosExistem = brinquedos.every(b => listaBrinquedos.has(b))
 
@@ -36,4 +36,23 @@ export function validarBrinquedos(brinquedos) {
     if (!estaDuplicado && brinquedosExistem)
         return true
     return false
+}
+
+export function validarSeApto(brinquedosDaPessoa, animal, qtdeAdotadosPessoa) {
+    const brinquedosDoAnimal = listaAnimais[animal].brinquedos
+
+    const brinquedosEmComum = brinquedosDaPessoa.filter(b => brinquedosDoAnimal.includes(b))
+
+    const mesmoTamanho = brinquedosEmComum.length === brinquedosDoAnimal.length;
+
+    let estaValido = false
+
+    if (animal === "Loco") {
+        estaValido =  mesmoTamanho && qtdeAdotadosPessoa < 3;
+    } else {
+        const mesmaOrdem = brinquedosDoAnimal.every((b, i) => b === brinquedosEmComum[i]);
+
+        estaValido = mesmoTamanho && mesmaOrdem && qtdeAdotadosPessoa < 3;
+    }
+    return estaValido
 }
