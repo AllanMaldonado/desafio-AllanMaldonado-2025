@@ -14,11 +14,7 @@ function verificarDuplicado(lista) {
     return true
 }
 
-export function validarAnimais(animaisDaEntrada) {
-    const animais = animaisDaEntrada
-        .split(',')
-        .map(a => a.trim().toUpperCase())
-
+export function validarAnimais(animais) {  
     const listaAnimaisUpper = Object.keys(listaAnimais)
         .map(a => a.toUpperCase())
 
@@ -31,10 +27,7 @@ export function validarAnimais(animaisDaEntrada) {
     return false
 }
 
-export function validarBrinquedos(brinquedosDaPessoa) {
-    const brinquedos = brinquedosDaPessoa
-        .split(",")
-        .map(b => b.trim().toUpperCase())
+export function validarBrinquedos(brinquedos) { 
 
     const brinquedosExistem = brinquedos.every(b => listaBrinquedos.has(b))
 
