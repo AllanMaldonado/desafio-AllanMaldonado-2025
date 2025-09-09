@@ -21,8 +21,8 @@ class AbrigoAnimais {
 
     for (let animal of animais) {
       animal = capitalize(animal)
-      const pessoa1EstaApta = validarSeApto(brinquedosP1, animal, adotadosPessoa1.length)
-      const pessoa2EstaApta = validarSeApto(brinquedosP2, animal, adotadosPessoa2.length)
+      const pessoa1EstaApta = validarSeApto(brinquedosP1, animal, adotadosPessoa1)
+      const pessoa2EstaApta = validarSeApto(brinquedosP2, animal, adotadosPessoa2)
 
       if (pessoa1EstaApta && pessoa2EstaApta) {
         resultado.push(`${animal} - abrigo`)

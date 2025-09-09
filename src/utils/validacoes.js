@@ -38,7 +38,7 @@ export function validarBrinquedos(brinquedos) {
     return false
 }
 
-export function validarSeApto(brinquedosDaPessoa, animal, qtdeAdotadosPessoa) {
+export function validarSeApto(brinquedosDaPessoa, animal, adotadosPessoa) {
     const brinquedosDoAnimal = listaAnimais[animal].brinquedos
 
     const brinquedosEmComum = brinquedosDaPessoa.filter(b => brinquedosDoAnimal.includes(b))
@@ -48,11 +48,11 @@ export function validarSeApto(brinquedosDaPessoa, animal, qtdeAdotadosPessoa) {
     let estaValido = false
 
     if (animal === "Loco") {
-        estaValido =  mesmoTamanho && qtdeAdotadosPessoa < 3;
+        estaValido =  mesmoTamanho && adotadosPessoa.length < 3;
     } else {
         const mesmaOrdem = brinquedosDoAnimal.every((b, i) => b === brinquedosEmComum[i]);
 
-        estaValido = mesmoTamanho && mesmaOrdem && qtdeAdotadosPessoa < 3;
+        estaValido = mesmoTamanho && mesmaOrdem && adotadosPessoa.length < 3;
     }
     return estaValido
 }
