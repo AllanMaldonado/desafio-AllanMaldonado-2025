@@ -60,4 +60,23 @@ describe('Testes Adicionais -> Validar Entradas', () => {
     expect(resultado.lista.length).toBe(4);
     expect(resultado.erro).toBeFalsy();
   });
-})
+
+  test('Deve rejeitar brinquedo inexistente pessoa 1', () => {
+    const resultado = new AbrigoAnimais().encontraPessoas('ERRADO,RATO', 'BOLA,LASER', 'Rex');
+    expect(resultado.erro).toBe('Brinquedo inválido');
+    expect(resultado.lista).toBeFalsy();
+  });
+
+  test('Deve rejeitar brinquedo inexistente pessoa 2', () => {
+    const resultado = new AbrigoAnimais().encontraPessoas('RATO,BOLA', 'ERRADO,LASER', 'Mimi');
+    expect(resultado.erro).toBe('Brinquedo inválido');
+    expect(resultado.lista).toBeFalsy();
+  });
+
+  test('Deve rejeitar entrada vazia de animais', () => {
+    const resultado = new AbrigoAnimais().encontraPessoas('RATO,BOLA', 'LASER', '');
+    expect(resultado.erro).toBe('Animal inválido');
+    expect(resultado.lista).toBeFalsy();
+  });
+});
+
